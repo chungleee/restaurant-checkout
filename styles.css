@@ -31,4 +31,38 @@ header::before {
   height: 100%;
   background-image: url("./assets/hero-burger.jpg");
   filter: brightness(75%);
+}
+
+#menu .menu-item-container {
+  margin: 1rem 2rem;
+}
+#menu .menu-item-container .menu-item {
+  display: flex;
+  height: 150px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #8b8b8b;
+}
+#menu .menu-item-container .menu-item .menu-item-emoji {
+  font-size: 5rem;
+}
+#menu .menu-item-container .menu-item .menu-item-description {
+  margin-right: auto;
+  margin-left: 1.5rem;
+}
+#menu .menu-item-container .menu-item .menu-item-description h3 {
+  text-transform: capitalize;
+  font-size: 1.5rem;
+}
+#menu .menu-item-container .menu-item .menu-item-description p:nth-of-type(1) {
+  color: #8b8b8b;
+}
+#menu .menu-item-container .menu-item .add-btn {
+  height: 50px;
+  background: none;
+  width: 50px;
+  border-radius: 100193px;
+  border: 1px solid #8b8b8b;
+  font-size: 1rem;
+  cursor: pointer;
 }/*# sourceMappingURL=styles.css.map */
