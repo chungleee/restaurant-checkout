@@ -4,19 +4,42 @@ import { menuArray } from "./dummyData.js";
 document.addEventListener("click", (event) => {
 	if (event.target.dataset.itemId) {
 		handleAddItemToCart(event.target.dataset.itemId);
+	} else if (event.target.dataset.itemIdRemove) {
+		handleRemoveItemFromCart(event.target.dataset.itemIdRemove);
 	}
 });
 
-const cartItems = [];
+let cartItems = [];
+let totalPrice = 0;
 
 function handleAddItemToCart(itemId) {
 	menuArray.forEach((item) => {
 		if (item.id === parseInt(itemId)) {
 			cartItems.push(item);
+			totalPrice += item.price;
 		}
 	});
 
 	renderOrder();
+}
+
+function handleRemoveItemFromCart(itemId) {
+	const updatedCart = cartItems.filter((item) => {
+		return item.id !== parseInt(itemId);
+	});
+	cartItems = updatedCart;
+
+	handleTotalPrice();
+	renderOrder();
+}
+
+function handleTotalPrice() {
+	let newTotal = 0;
+	cartItems.forEach((item) => {
+		newTotal += item.price;
+	});
+
+	totalPrice = newTotal;
 }
 
 function renderOrder() {
@@ -26,12 +49,13 @@ function renderOrder() {
 		checkoutListHTML += `
 				<li>
 					<p>${item.name}</p>
-					<span id="remove-item-btn" data-item-id='${item.id}' role="button">remove</span>
+					<span id="remove-item-btn" data-item-id-remove='${item.id}' role="button">remove</span>
 					<p>$${item.price}</p>
 				</li>
 		`;
 	});
 
+	document.getElementById("total-price").textContent = `$${totalPrice}`;
 	document.getElementById("checkout-summary").style.display = "block";
 	document.getElementById("checkout-list").innerHTML = checkoutListHTML;
 }
