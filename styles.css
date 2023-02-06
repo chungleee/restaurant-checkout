@@ -65,4 +65,35 @@ header::before {
   border: 1px solid #8b8b8b;
   font-size: 1rem;
   cursor: pointer;
+}
+
+#checkout-summary {
+  margin: 1rem 2rem;
+}
+#checkout-summary h2 {
+  text-align: center;
+}
+#checkout-summary .checkout-list {
+  border-bottom: 1px solid black;
+}
+#checkout-summary .checkout-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+#checkout-summary .checkout-list li p {
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+#checkout-summary .checkout-list li span {
+  color: #8b8b8b;
+  margin-left: 1.5rem;
+  margin-right: auto;
+}
+#checkout-summary .checkout-total {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  font-size: 1.5rem;
 }/*# sourceMappingURL=styles.css.map */
