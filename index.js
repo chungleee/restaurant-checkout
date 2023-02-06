@@ -20,13 +20,27 @@ function handleAddItemToCart(itemId) {
 }
 
 function renderOrder() {
-	console.log(cartItems);
+	let checkoutListHTML = ``;
+
+	cartItems.forEach((item) => {
+		checkoutListHTML += `
+				<li>
+					<p>${item.name}</p>
+					<span id="remove-item-btn" data-item-id='${item.id}' role="button">remove</span>
+					<p>$${item.price}</p>
+				</li>
+		`;
+	});
+
+	document.getElementById("checkout-summary").style.display = "block";
+	document.getElementById("checkout-list").innerHTML = checkoutListHTML;
 }
 
-let menuItemHTML = "";
-menuArray.forEach((item) => {
-	let ingredients = item.ingredients.join(", ");
-	menuItemHTML += `
+function render() {
+	let menuItemHTML = "";
+	menuArray.forEach((item) => {
+		let ingredients = item.ingredients.join(", ");
+		menuItemHTML += `
                     <div class="menu-item">
                         <p role="img" aria-details='${item.name}' class="menu-item-emoji">${item.emoji}</p>
                         <div class="menu-item-description">
@@ -37,9 +51,7 @@ menuArray.forEach((item) => {
                         <button data-item-id='${item.id}' class="add-btn">+</button>
                     </div>
   `;
-});
-
-function render() {
+	});
 	document.getElementById("menu-item-container").innerHTML = menuItemHTML;
 }
 
