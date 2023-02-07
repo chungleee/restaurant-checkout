@@ -86,6 +86,45 @@ header::before {
 		margin-bottom: 1.5rem;
 	}
 
+	.checkout-modal {
+		display: none;
+		position: absolute;
+		background-color: #ffffff;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 90%;
+
+		.modal-content {
+			display: flex;
+			flex-direction: column;
+			padding: 2.5rem 1rem;
+
+			h2 {
+				font-weight: bold;
+			}
+
+			input[type="text"] {
+				border: 1px solid #757575;
+				padding: 1rem 2rem;
+				border-radius: 5px;
+				margin-bottom: 1rem;
+				font-size: 1.5rem;
+				font-weight: lighter;
+			}
+
+			input[type="submit"] {
+				padding: 1rem 2rem;
+				border-radius: 5px;
+				border: none;
+				background-color: #16db99;
+				color: #fff;
+				font-weight: bold;
+				font-size: 1.5rem;
+			}
+		}
+	}
+
 	.checkout-list {
 		border-bottom: 1px solid black;
 
