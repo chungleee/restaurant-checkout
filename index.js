@@ -48,13 +48,12 @@ function handleTotalPrice() {
 
 function handlePaymentForm(event) {
 	event.preventDefault();
-	const formData = new FormData(document.getElementById("payment-form"));
-	const customerName = formData.get("name");
 
-	for (let key of formData.keys()) {
-		formData.delete(key);
+	const customerName = event.target.name.value;
+
+	for (let target of event.target) {
+		target.value = "";
 	}
-
 	renderOrderComplete(customerName);
 }
 
