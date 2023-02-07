@@ -159,9 +159,21 @@ header::before {
 		background-color: #16db99;
 		border: none;
 		color: #fff;
+		cursor: pointer;
 		font-weight: bold;
 		font-size: 1.25rem;
 		margin: 1.5rem 0;
 		padding: 1rem 0;
+	}
+
+	.order-complete {
+		background-color: #ecfdf5;
+		color: #065f46;
+		width: 100%;
+		font-size: 1.25rem;
+		height: 100px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 }

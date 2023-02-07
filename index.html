@@ -23,13 +23,17 @@
 		</section>
 		<section id="checkout-summary">
 			<div class="checkout-modal" id="checkout-modal">
-				<div class="modal-content">
+				<form method="post" id="payment-form" class="modal-content">
 					<h2>Enter card details</h2>
-					<input type="text" placeholder="Enter your name" />
-					<input type="text" placeholder="Enter card number" />
-					<input type="text" placeholder="Enter CVV" />
+					<input type="text" name="name" placeholder="Enter your name" />
+					<input
+						type="text"
+						name="card-number"
+						placeholder="Enter card number"
+					/>
+					<input type="text" name="card-cvv" placeholder="Enter CVV" />
 					<input type="submit" value="Pay" />
-				</div>
+				</form>
 			</div>
 			<h2>Your order</h2>
 			<ul id="checkout-list" class="checkout-list"></ul>
