@@ -4,8 +4,9 @@ import { menuArray } from "./dummyData.js";
 document.addEventListener("click", (event) => {
 	if (event.target.dataset.itemId) {
 		handleAddItemToCart(event.target.dataset.itemId);
-	} else if (event.target.dataset.itemIdRemove) {
-		handleRemoveItemFromCart(event.target.dataset.itemIdRemove);
+	} else if (event.target.dataset.itemIndexRemove) {
+		handleRemoveItemFromCart(event.target.dataset.itemIndexRemove);
+		console.log(event.target.dataset.itemIndexRemove);
 	}
 });
 
@@ -19,16 +20,16 @@ function handleAddItemToCart(itemId) {
 			totalPrice += item.price;
 		}
 	});
-
+	console.log("cart: ", cartItems);
 	renderOrder();
 }
 
-function handleRemoveItemFromCart(itemId) {
-	const updatedCart = cartItems.filter((item) => {
-		return item.id !== parseInt(itemId);
+function handleRemoveItemFromCart(itemIndex) {
+	const updatedCart = cartItems.filter((item, index) => {
+		return parseInt(itemIndex) !== index;
 	});
-	cartItems = updatedCart;
 
+	cartItems = updatedCart;
 	handleTotalPrice();
 	renderOrder();
 }
@@ -45,18 +46,22 @@ function handleTotalPrice() {
 function renderOrder() {
 	let checkoutListHTML = ``;
 
-	cartItems.forEach((item) => {
+	cartItems.forEach((item, index) => {
 		checkoutListHTML += `
 				<li>
 					<p>${item.name}</p>
-					<span id="remove-item-btn" data-item-id-remove='${item.id}' role="button">remove</span>
+					<span id="remove-item-btn" data-item-index-remove='${index}' role="button">remove</span>
 					<p>$${item.price}</p>
 				</li>
 		`;
 	});
 
 	document.getElementById("total-price").textContent = `$${totalPrice}`;
-	document.getElementById("checkout-summary").style.display = "block";
+	if (cartItems.length) {
+		document.getElementById("checkout-summary").style.display = "block";
+	} else {
+		document.getElementById("checkout-summary").style.display = "none";
+	}
 	document.getElementById("checkout-list").innerHTML = checkoutListHTML;
 }
 
